@@ -1,6 +1,8 @@
 # Kickstart file for Centos 7
 # Version 0.1
 
+# VMWare:
+# ip=dhcp net.ifnames=0 biosdevname=0 ks=http://domain.org/15.ks
 
 # install instead of upgrade
 install
@@ -45,7 +47,7 @@ zerombr
 clearpart --all --drives=sda
 
 # Create partitions
-part /boot --fstype ext4 --size=512
+part /boot --fstype ext2 --size=512
 part pv.01 --size=1000 --grow --ondisk=sda
 volgroup rootvg pv.01
 logvol / --vgname=rootvg --fstype=ext4 --size=4096 --name=root
