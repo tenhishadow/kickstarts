@@ -16,8 +16,15 @@ before_install:
   - 'sudo docker pull ${distribution}:${version}'
   - 'container_id=$(mktemp)'
   - 'sudo docker run -id -v="${PWD}":/mnt:ro ${distribution}:${version} > "${container_id}"'
+  - 'sudo docker exec "$(cat ${container_id})" yum update -y && yum install -y pykickstart'
 script:
-  - 'sudo docker exec "$(cat ${container_id})" for i in $( ls -1 *.ks ); do echo "processing $i" && ksvalidator $i && [[ $? -ne "1" ]] && echo "pizdeznahoibleat" && exit 1 ; done'
+  - 'sudo docker exec "$(cat ${container_id})" \
+                      for i in $( ls -1 *.ks ); \
+                      do 
+                        echo "processing $i" && \
+                        ksvalidator $i && \
+                        [[ $? -ne "1" ]] && echo "pizdeznahoibleat" && exit 1 ; \
+                      done'
 
 after_install:
   - 'sudo docker stop "${container_id}"'
