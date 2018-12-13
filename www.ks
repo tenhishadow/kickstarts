@@ -3,7 +3,7 @@
 
 # Requerements:
 #   rootdisk should be /dev/sda
-#   min 10Gb sized /dev/sda
+#   min 15Gb sized /dev/sda
 
 ## To be provided with cli:
 #
@@ -79,6 +79,10 @@ logvol swap     --vgname=rootvg --fstype=swap --size=1024 --name=swap
 
 ## setup bootloader
 bootloader --append="" --location=mbr --boot-drive=sda
+
+## kdump
+%addon com_redhat_kdump --disable
+%end
 
 ## install packages
 %packages
