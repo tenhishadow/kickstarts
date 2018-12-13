@@ -58,7 +58,8 @@ auth --enableshadow --passalgo=sha512
 rootpw --iscrypted $6$YAD3dXA9$sscfW.9bQMNv0llpfHcb7l.Tdx1H.vipZmpj/GrCm1GLH3es53Iai3j1iV1.K0mtLsTMZ9CDyofzmbY6hrcSy/
 
 ## setup network
-network --bootproto=static --device=eth0 --gateway=192.168.0.1 --ip=192.168.0.52 --nameserver=8.8.8.8 --netmask=255.255.255.0 --ipv6=auto --activate
+#network --bootproto=static --device=eth0 --gateway=192.168.0.1 --ip=192.168.0.52 --nameserver=8.8.8.8 --netmask=255.255.255.0 --ipv6=auto --activate
+network  --bootproto=dhcp
 
 ## clean mbr
 zerombr
