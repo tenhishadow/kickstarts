@@ -17,7 +17,7 @@ before_install:
   - 'container_id=$(mktemp)'
   - 'sudo docker run -id -v="${PWD}":/mnt:ro ${distribution}:${version} > "${container_id}"'
 script:
-  - 'sudo docker exec "$(cat ${container_id})" for i in $( ls *.ks ); do ksvalidator $i; done'
+  - 'sudo docker exec "$(cat ${container_id})" for i in $( ls -1 *.ks ); do echo "processing $i" && ksvalidator $i && [[ $? -ne "1" ]] && echo "pizdeznahoibleat" && exit 1 ; done'
 
 after_install:
   - 'sudo docker stop "${container_id}"'
