@@ -16,7 +16,7 @@ before_install:
   - 'sudo docker pull ${distribution}:${version}'
   - 'container_id=$(mktemp)'
   - 'sudo docker run -id --privileged -v="${PWD}":/mnt:ro ${distribution}:${version} > "${container_id}"'
-  - 'sudo docker exec "$(cat ${container_id})" yum update -y && yum install -y pykickstart'
+  - 'sudo docker exec "$(cat ${container_id})" yum install -y pykickstart'
 script:
   - 'sudo docker exec "$(cat ${container_id})" \
                       for i in $( ls -1 *.ks ); \
