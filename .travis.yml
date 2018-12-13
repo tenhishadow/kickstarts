@@ -23,7 +23,7 @@ script:
                       do 
                         echo "processing $i" && \
                         ksvalidator $i && \
-                        [[ $? -ne "1" ]] && echo "pizdeznahoibleat" && exit 1 ; \
+                        [[ $? -ne "0" ]] && echo "pizdeznahoibleat" && exit 1 ; \
                       done'
 
 after_install:
