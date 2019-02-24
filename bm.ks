@@ -28,7 +28,7 @@ firewall --enabled --ssh
 timezone Europe/Moscow --isUtc
 
 # use yandex repo for installation
-url --url="http://mirror.yandex.ru/centos/7/os/x86_64"
+url --url="http://mirror.centos.org/altarch/7/os/i386/"
 
 # set pass config
 auth --enableshadow --passalgo=sha512
