@@ -1,7 +1,11 @@
+---
+
 language: python
 python:
-  - "2.7"
+  - "3.6"
 install:
+  - pip install --upgrade pip setuptools pytest
+  - pip install coverage nose ordered-set polib pylint requests six
   - pip install pykickstart
 script:
   - "ksvalidator -l"
@@ -10,3 +14,4 @@ script:
 notifications:
  email: false
 
+...
