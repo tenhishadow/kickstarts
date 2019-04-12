@@ -3,12 +3,14 @@
 language: python
 python:
   - "3.6"
+env:    
+  - distr: RHEL7        
 install:
   - pip install --upgrade pip setuptools pytest
   - pip install coverage nose ordered-set polib pylint requests six
   - pip install pykickstart
 script:
-  - "for i in *.ks; do ksvalidator -l $i; done"
+  - "for i in *.ks; do echo $i; ksvalidator --version ${distr} $i; done"
 notifications:
  email: false
 
